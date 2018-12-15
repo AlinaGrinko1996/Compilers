@@ -16,7 +16,7 @@ public class MainMiniJavaChecker {
 
 	public static void main(String[] args) {
 		
-		String testProgram = args[0];
+		String testProgram = "examples/binarysearch.java";
 		TypeCheckVisitor checkVisitor = new TypeCheckVisitor();
 		
 		// Parse input program

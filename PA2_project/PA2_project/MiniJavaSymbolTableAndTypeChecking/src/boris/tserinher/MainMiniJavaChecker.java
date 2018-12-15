@@ -17,7 +17,7 @@ public class MainMiniJavaChecker {
 	public static void main(String[] args) {
 		
 		String testProgram = "examples/binarysearch.java";
-		TypeCheckVisitor checkVisitor = new TypeCheckVisitor();
+	
 		
 		// Parse input program
 		MiniJavaGrammarLexer lexer = null;
@@ -30,12 +30,17 @@ public class MainMiniJavaChecker {
 		MiniJavaGrammarParser parser = new MiniJavaGrammarParser(new BufferedTokenStream(lexer));		 
 		MiniJavaGrammarParser.StartContext tree = parser.start();
 
-		checkVisitor.visitChildren(tree);
-		// Display tree
+		//Display tree
 		//Trees.inspect(tree, parser);
 		
 		// Indented tree print using a listener
 		MiniJavaSymbolTable miniJavaSymbolTable = new MiniJavaSymbolTable();
+		
+		System.out.println("Enter");
+		TypeCheckVisitor checkVisitor = new TypeCheckVisitor(miniJavaSymbolTable);
+		checkVisitor.visit(tree);
+		System.out.println("Exit");
+		
 		ParseTreeWalker walker = new ParseTreeWalker();
 		SymbolTableListener listener = new SymbolTableListener(miniJavaSymbolTable);
 		walker.walk(listener, tree);

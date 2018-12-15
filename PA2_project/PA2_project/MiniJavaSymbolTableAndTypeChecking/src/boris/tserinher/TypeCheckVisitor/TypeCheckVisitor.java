@@ -10,15 +10,14 @@ public class TypeCheckVisitor extends MiniJavaGrammarBaseVisitor<Record> {
 	
 	private SymbolTable symbolTable;
 
-	/*public TypeCheckVisitor(SymbolTable symbolTable) {
-		super();
+    public TypeCheckVisitor(SymbolTable symbolTable) {
 		this.symbolTable = symbolTable;
-	}*/
+	}
 
 	@Override
 	public Record visitPlusExpression(PlusExpressionContext ctx) {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~1~~~~~~~~~~~~~~~~~~");
 		System.out.println(ctx.children);
 		return super.visitPlusExpression(ctx);
 	}
@@ -26,9 +25,9 @@ public class TypeCheckVisitor extends MiniJavaGrammarBaseVisitor<Record> {
 	@Override
 	public Record visitMainClass(MainClassContext ctx) {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~2~~~~~~~~~~~~~~~~~~");
 		System.out.println(ctx.children);
-		return super.visitMainClass(ctx);
+		return null;
 	}
 	
 	

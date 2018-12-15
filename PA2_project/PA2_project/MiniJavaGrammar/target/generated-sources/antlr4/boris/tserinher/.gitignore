@@ -1,0 +1,8 @@
+/MiniJavaGrammar.tokens
+/MiniJavaGrammarBaseListener.java
+/MiniJavaGrammarBaseVisitor.java
+/MiniJavaGrammarLexer.java
+/MiniJavaGrammarLexer.tokens
+/MiniJavaGrammarListener.java
+/MiniJavaGrammarParser.java
+/MiniJavaGrammarVisitor.java

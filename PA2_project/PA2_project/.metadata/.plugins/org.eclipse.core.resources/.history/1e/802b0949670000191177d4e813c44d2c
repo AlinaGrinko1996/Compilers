@@ -1,0 +1,7 @@
+package boris.tserinher.TypeCheckVisitor;
+
+import boris.tserinher.MiniJavaGrammarBaseVisitor;
+
+public class TypeCheckVisitor extends MiniJavaGrammarBaseVisitor<Record> {
+
+}

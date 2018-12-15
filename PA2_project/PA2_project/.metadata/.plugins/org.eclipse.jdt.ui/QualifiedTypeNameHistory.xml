@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="boris.tserinher.SymbolTable.MiniJavaSymbolTable.Scope"/>
+<fullyQualifiedTypeName name="boris.tserinher.SymbolTable.MiniJavaSymbolTable"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="boris.tserinher.Records.MethodRecord"/>
+<fullyQualifiedTypeName name="boris.tserinher.Records.Record"/>
+<fullyQualifiedTypeName name="boris.tserinher.SymbolTable.SymbolTable"/>
+<fullyQualifiedTypeName name="boris.tserinher.TypeCheckVisitor.TypeCheckVisitor"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,25 @@
+package boris.tserinher.Records;
+
+import java.util.HashMap;
+
+public class MethodRecord extends Record {
+
+	public MethodRecord(String id, String type) {
+		super(id, type);
+	}
+	private HashMap<String , VarRecord> parametersList = new HashMap<>();
+	
+	public void putFieldsRecord(VarRecord parameterRecord){
+		parametersList.put(parameterRecord.getId(), parameterRecord);
+	}
+	
+	public VarRecord getFieldRecord(String parameterId){
+		return parametersList.get(parameterId);
+	}
+	
+	public void printFieldsList(){
+		parametersList.forEach((id, record)->{
+			System.out.format("Parameter: %s \n", record);
+		});
+	}
+}

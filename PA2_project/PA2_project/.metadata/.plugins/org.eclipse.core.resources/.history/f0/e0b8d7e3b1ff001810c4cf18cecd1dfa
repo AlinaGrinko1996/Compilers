@@ -1,0 +1,25 @@
+package boris.tserinher.Records;
+
+import java.util.HashMap;
+
+public class MethodRecord extends Record {
+
+	public MethodRecord(String id, String type) {
+		super(id, type);
+	}
+	private HashMap<String , VarRecord> fieldsList = new HashMap<>();
+	
+	public void putDFieldsRecord(VarRecord fieldRecord){
+		fieldsList.put(fieldRecord.getId(), fieldRecord);
+	}
+	
+	public VarRecord getFieldRecord(String fieldId){
+		return fieldsList.get(fieldId);
+	}
+	
+	public void printFieldsList(){
+		fieldsList.forEach((id, record)->{
+			System.out.format("Field: %s \n", record);
+		});
+	}
+}

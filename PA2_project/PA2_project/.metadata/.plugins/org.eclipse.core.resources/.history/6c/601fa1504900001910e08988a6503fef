@@ -1,0 +1,7 @@
+antlr4.encoding=UTF-8
+antlr4.visitor=true
+antlr4.vmArgs=
+antlr4ide.is_project_specific=true
+eclipse.preferences.version=1
+outlet.DEFAULT_OUTPUT.cleanupDerived=false
+outlet.DEFAULT_OUTPUT.directory=./target/generated-sources/antlr4

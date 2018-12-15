@@ -1,0 +1,146 @@
+package boris.tserinher.SymbolTable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import boris.tserinher.Records.Record;
+
+public class MiniJavaSymbolTable implements SymbolTable {
+	
+	private Scope rootScope;
+	private Scope currentScope;
+	
+	public MiniJavaSymbolTable() {
+		super();
+		this.rootScope = new Scope(null);
+		this.currentScope = rootScope;
+		this.currentScope.setScopeType("program");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~" + this.currentScope.getScopeType());
+	}
+
+	public void setCurrentScope(Scope currentScope) {
+		this.currentScope = currentScope;
+	}
+	
+	public void setCurrentScopeType(String scopeType){
+		currentScope.setScopeType(scopeType);
+		System.out.println("Set scope type = " + scopeType + " = " + currentScope.getScopeType());
+	}
+
+	@Override
+	public void enterScope() {
+		 currentScope = currentScope.nextChild();
+	}
+		
+	@Override
+	public void exitScope() {
+		currentScope = currentScope.getParentScope();
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void printTable() {
+		currentScope.records.forEach((id, record) ->{
+			System.out.format("%s \n", record);
+		});
+		
+		
+	}
+
+	@Override
+	public void putRecord(String id, Record record) {
+		currentScope.putRecord(id, record);
+	}
+
+	@Override
+	public Record lookup(String id) {
+		currentScope.lookup(id);	
+		return null;
+	}
+	
+	public void printDebugScope(){
+		currentScope.printScopeChildren();
+	}
+	
+	private class Scope{
+		
+		//private Scope currentScope; 
+		private String scopeType;
+		private int next = 0; //Next child to visit
+		private Scope parentScope; //Parent scope
+		private ArrayList<Scope> scopeChildrenList = new ArrayList<>(); //Children scopes
+		private HashMap<String, Record> records = new HashMap<>();
+		
+		public Scope(Scope parentScope) {
+			this.parentScope = parentScope;
+		}
+		
+		public String getScopeType() {
+			return scopeType;
+		}
+
+		public void setScopeType(String scopeType) {
+			this.scopeType = scopeType;
+		}
+		
+		public Scope nextChild() { //Creates new children on demand
+			Scope nextChild;
+			if (next >= scopeChildrenList.size()) { //Child does not exist
+			nextChild = new Scope(this); // ==> create new Scope
+			//System.out.println("Next child = " + nextChild);
+			scopeChildrenList.add(nextChild);
+			}
+			else //Child exists
+			nextChild = (Scope) scopeChildrenList.get(next); // ==> visit child
+			next++;
+			return nextChild;
+		}
+		
+		
+		
+		public Record lookup(String id) {
+			if (records.containsKey(id)){ //Check if in current scope
+			return (Record) records.get(id);
+			}
+			else { //Move to enclosing/parent scope
+			if (parentScope == null){
+			return null; // Identifier not in table
+			}
+			else
+			return parentScope.lookup(id); // Delegate request to enclosing scope
+			}
+		}
+		
+		public void resetScope() { // Must be called after each traversal
+			next = 0;
+			for (int i=0;i < scopeChildrenList.size();i++)
+			((Scope)scopeChildrenList.get(i)).resetScope();
+		}
+		
+		public void putRecord(String id, Record record){
+			records.put(id, record);
+		}
+
+		public Scope getParentScope() {
+			return this.parentScope;
+		}
+		
+		@Override
+		public String toString() {
+			return "Current Scope = " + scopeType + ", parentScope="
+					+ parentScope.scopeType + "]";
+		}
+
+		public void printScopeChildren(){
+			this.scopeChildrenList.forEach((scope) -> {
+				System.out.format("%s \n", scope);
+				});
+		}
+		
+		
+	}
+
+
+}

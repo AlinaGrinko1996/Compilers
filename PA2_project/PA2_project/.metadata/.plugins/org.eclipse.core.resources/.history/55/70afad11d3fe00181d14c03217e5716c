@@ -1,0 +1,25 @@
+package boris.tserinher;
+
+import org.antlr.v4.gui.Trees;
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.BufferedTokenStream;
+
+public class MainMiniJavaChecker {
+
+	public static void main(String[] args) {
+		String testProgram = args[0];
+		System.out.println("Reading test program from: "+testProgram);
+		
+		// Parse input program
+		MiniJavaGrammarLexer lexer = new MiniJavaGrammarLexer( new ANTLRFileStream(testProgram) );
+		MiniJavaGrammarParser parser = new MiniJavaGrammarParser(new BufferedTokenStream(lexer));		 
+		MiniJavaGrammarParser.StartContext root = parser.start();
+
+		// Display tree
+		Trees.inspect(root, parser);
+
+		System.out.println("Done!");
+
+	}
+
+}

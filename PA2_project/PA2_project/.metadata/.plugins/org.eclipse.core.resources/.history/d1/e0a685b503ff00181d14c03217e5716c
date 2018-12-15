@@ -1,0 +1,38 @@
+package boris.tserinher;
+
+import java.io.IOException;
+
+import org.antlr.v4.gui.Trees;
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.BufferedTokenStream;
+
+public class MainMiniJavaChecker {
+
+	public static void main(String[] args) {
+		
+		String testProgram = args[0];
+		
+		/*String testProgram = "C:/User/User/Desktop\\Sweden_compilers"
+				+ "\\PA_1\\minijava_samples\\minijava_samples\\binarysearch.txt";*/
+		
+		System.out.println("Reading test program from: " + testProgram);
+		
+		// Parse input program
+		MiniJavaGrammarLexer lexer = null;
+		try {
+			lexer = new MiniJavaGrammarLexer( new ANTLRFileStream(testProgram) );
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MiniJavaGrammarParser parser = new MiniJavaGrammarParser(new BufferedTokenStream(lexer));		 
+		MiniJavaGrammarParser.StartContext root = parser.start();
+
+		// Display tree
+		Trees.inspect(root, parser);
+
+		System.out.println("Done!");
+
+	}
+
+}

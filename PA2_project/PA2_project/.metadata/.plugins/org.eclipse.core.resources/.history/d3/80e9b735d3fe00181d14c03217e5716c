@@ -1,0 +1,5 @@
+package boris.tserinher.Records;
+
+public class ClassRecord extends Record {
+
+}

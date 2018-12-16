@@ -65,6 +65,18 @@ public interface MiniJavaGrammarListener extends ParseTreeListener {
 	 */
 	void exitType(@NotNull MiniJavaGrammarParser.TypeContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code idExpression}
+	 * labeled alternative in {@link MiniJavaGrammarParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdExpression(@NotNull MiniJavaGrammarParser.IdExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code idExpression}
+	 * labeled alternative in {@link MiniJavaGrammarParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdExpression(@NotNull MiniJavaGrammarParser.IdExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code newObjectExpression}
 	 * labeled alternative in {@link MiniJavaGrammarParser#expression}.
 	 * @param ctx the parse tree

@@ -79,6 +79,18 @@ public class MiniJavaGrammarBaseListener implements MiniJavaGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIdExpression(@NotNull MiniJavaGrammarParser.IdExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdExpression(@NotNull MiniJavaGrammarParser.IdExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNewObjectExpression(@NotNull MiniJavaGrammarParser.NewObjectExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}

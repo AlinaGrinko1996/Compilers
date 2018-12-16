@@ -46,6 +46,13 @@ public interface MiniJavaGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitType(@NotNull MiniJavaGrammarParser.TypeContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code idExpression}
+	 * labeled alternative in {@link MiniJavaGrammarParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdExpression(@NotNull MiniJavaGrammarParser.IdExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code newObjectExpression}
 	 * labeled alternative in {@link MiniJavaGrammarParser#expression}.
 	 * @param ctx the parse tree

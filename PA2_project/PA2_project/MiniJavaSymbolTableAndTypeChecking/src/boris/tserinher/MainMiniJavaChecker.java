@@ -35,15 +35,17 @@ public class MainMiniJavaChecker {
 		
 		// Indented tree print using a listener
 		MiniJavaSymbolTable miniJavaSymbolTable = new MiniJavaSymbolTable();
+	
+		
+		ParseTreeWalker walker = new ParseTreeWalker();
+		SymbolTableListener listener = new SymbolTableListener(miniJavaSymbolTable);
+		walker.walk(listener, tree);
 		
 		System.out.println("Enter");
 		TypeCheckVisitor checkVisitor = new TypeCheckVisitor(miniJavaSymbolTable);
 		checkVisitor.visit(tree);
 		System.out.println("Exit");
 		
-		ParseTreeWalker walker = new ParseTreeWalker();
-		SymbolTableListener listener = new SymbolTableListener(miniJavaSymbolTable);
-		walker.walk(listener, tree);
 		miniJavaSymbolTable.printTable();
 		System.out.println("Done!");
 		

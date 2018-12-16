@@ -83,6 +83,7 @@ expression :  rBExpr #roundBracketxpression
 | expression '==' expression #equalExpression
 | expression '&&' expression #andExpression
 | expression '||' expression #orExpression
+| ID #idExpression
 | (MINUS | PLUS)? (INT | ID) #prePlusMinusExpression
 | 'new' ID '()' #newObjectExpression
 | BOOLEAN #boolTypeExpression
